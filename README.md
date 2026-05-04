@@ -137,3 +137,15 @@ To verify the Retrieval precision, run the standalone evaluator script:
 python evaluate_rag.py
 ```
 This script mocks a test dataset of queries and outputs the exact average Precision and Recall metrics for the RAG pipeline.
+
+---
+
+## 📸 Screenshots
+
+### The Copilot Interface
+*(Interactive chat interface featuring Generative UI Ticket Escalation and Prompt Chips)*
+![Copilot UI](assets/ui_chat.png)
+
+### The Analytics Dashboard
+*(Native HTML/JS Dashboard visualizing historical SQLite data via Chart.js)*
+![Analytics Dashboard](assets/ui_dashboard.png)
