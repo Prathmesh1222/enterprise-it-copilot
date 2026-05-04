@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise IT Copilot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="light-theme">
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="header-info">
+                <div class="avatar-container">
+                    <div class="avatar bot-avatar-img">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <div class="status-indicator"></div>
+                </div>
+                <div>
+                    <h1>IT Support Copilot</h1>
+                    <p>Powered by Llama 3.1 & FAISS</p>
+                </div>
+            </div>
+            
+            <div class="header-controls">
+                <div class="tab-controls">
+                    <button id="tab-chat" class="tab-btn active">Copilot</button>
+                    <button id="tab-dashboard" class="tab-btn">Dashboard</button>
+                </div>
+                <button id="theme-toggle" class="theme-btn" title="Toggle Theme">
+                    <svg id="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun-icon" style="display:none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- CHAT VIEW -->
+        <div id="view-chat" class="view-section active-view">
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        Hello! I'm your Enterprise IT Support Copilot. I can search official company policies (SOPs) or look up how we resolved past IT support tickets. How can I assist you today?
+                    </div>
+                    <div class="message-timestamp">Just now</div>
+                </div>
+            </div>
+
+            <div class="prompt-chips" id="prompt-chips">
+                <button class="chip">VPN keeps dropping</button>
+                <button class="chip">Reset my password</button>
+                <button class="chip">My company car won't start</button>
+            </div>
+
+            <div class="chat-input-container">
+                <form id="chat-form">
+                    <input type="text" id="user-input" placeholder="Type your issue here... e.g. VPN keeps dropping" autocomplete="off" required>
+                    <button type="submit" id="send-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- DASHBOARD VIEW -->
+        <div id="view-dashboard" class="view-section" style="display: none;">
+            <div class="dashboard-container">
+                <div class="metrics-row">
+                    <div class="metric-card">
+                        <h3>Total Tickets</h3>
+                        <p id="total-tickets-val">Loading...</p>
+                    </div>
+                </div>
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h4>Top Issue Types</h4>
+                        <canvas id="typeChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h4>Priority Breakdown</h4>
+                        <canvas id="priorityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+langchain
+langchain-ollama
+langchain-huggingface
+langchain-community
+faiss-cpu
+pandas
+pypdf
+networkx
