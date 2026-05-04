@@ -19,7 +19,7 @@ def calculate_precision_recall(retrieved_docs, ground_truth_docs):
 if __name__ == "__main__":
     print("📊 Running RAG Precision & Recall Evaluation...\n")
     
-    # Mocking an evaluation dataset for Hackathon Judges
+    # Mocking an evaluation dataset for automated testing
     eval_dataset = [
         {
             "query": "How do I fix a dropping VPN connection?",
@@ -50,4 +50,4 @@ if __name__ == "__main__":
     print(f"🏆 Average Retrieval Precision: {avg_precision:.2f}")
     print(f"🏆 Average Retrieval Recall: {avg_recall:.2f}")
     print("========================================")
-    print("Note: This script demonstrates the required 'Measure precision & recall' metric from the hackathon rubric.")
+    print("Note: This script demonstrates the required Precision & Recall metrics for enterprise RAG deployments.")

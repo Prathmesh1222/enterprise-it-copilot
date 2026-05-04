@@ -2,8 +2,6 @@
 
 An advanced, multi-agent AI system designed to resolve IT support bottlenecks by unifying scattered documentation, historical ticket databases, and dynamic issue escalation into a single, seamless conversational interface. 
 
-Built exclusively for the **NASSCOM Agentic AI Hackathon**.
-
 ---
 
 ## 🎯 The Problem
@@ -55,26 +53,26 @@ graph TD
 
 ---
 
-## 🏆 NASSCOM Rubric Alignment
+## 🏆 Core Capabilities
 
-This project was engineered specifically to hit every requirement on the NASSCOM grading rubric:
+This project implements several advanced enterprise AI architectures:
 
 ### 1. Data Layer
-* **Clean & Chunk Docs:** Handled via `ingest_data.py`.
+* **Clean & Chunk Docs:** Robust data ingestion pipeline handling unstructured IT documentation.
 * **Generate Embeddings:** Powered by `HuggingFaceEmbeddings` (`all-MiniLM-L6-v2`).
 * **Store in Vector DB:** High-speed local retrieval using **FAISS**.
 
 ### 2. Retrieval Layer
 * **Top-K Retrieval:** Configured for high-recall candidate generation.
-* **Reranking (Bonus):** We implemented a **Cross-Encoder Reranker** (`ms-marco-MiniLM-L-6-v2`) to mathematically score and re-order the retrieved chunks, virtually eliminating hallucination.
-* **Measure Precision & Recall:** Execute `python evaluate_rag.py` to see the exact mathematical calculation of our pipeline's Retrieval Precision and Recall.
+* **Reranking:** Implements a **Cross-Encoder Reranker** (`ms-marco-MiniLM-L-6-v2`) to mathematically score and re-order the retrieved chunks, virtually eliminating hallucination.
+* **Measure Precision & Recall:** Included `evaluate_rag.py` to automatically calculate the exact mathematical precision and recall of the retrieval pipeline.
 
 ### 3. Application Layer
-* **LLM Generation:** Powered entirely by a local **Llama 3.1** model, guaranteeing enterprise data privacy.
+* **LLM Generation:** Powered entirely by a local **Llama 3.1** model, guaranteeing strict enterprise data privacy.
 * **Source Citation:** The agent is strictly prompted to inject references (e.g., `[Source: VPN_Troubleshooting_SOP.pdf]`), which the frontend translates into interactive badges.
 * **Guardrails:** The self-reflective orchestrator prompt forbids hallucinated text, forcing the agent to admit ignorance and utilize the escalation tool.
 
-### 4. Agentic Enhancement (Bonus)
+### 4. Agentic Workflows
 The Copilot uses LangChain's Tool Calling Agent (ReAct framework) with 5 distinct tools:
 1. **Tool 1 (Doc Search):** `search_sops` (Hybrid RAG).
 2. **Tool 2 (Ticket Lookup):** `lookup_historical_tickets` (SQLite).
@@ -134,8 +132,8 @@ python backend.py
 
 ## 🧪 Testing the Evaluator
 
-To verify the Retrieval precision required by the judges, run the standalone evaluator script:
+To verify the Retrieval precision, run the standalone evaluator script:
 ```bash
 python evaluate_rag.py
 ```
-This script mocks a test dataset of queries and outputs the exact average Precision and Recall metrics.
+This script mocks a test dataset of queries and outputs the exact average Precision and Recall metrics for the RAG pipeline.
